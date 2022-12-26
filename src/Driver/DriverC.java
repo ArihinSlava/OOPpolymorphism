@@ -1,10 +1,9 @@
 package Driver;
 
 
-import Transport.Transport;
-import Transport.Competing;
+import Transport.Truck;
 
-public class DriverC <T extends Transport & Competing> extends Driver {
+public class DriverC <C extends Truck> extends Driver{
 
     public DriverC(String firstName, String middleName, String endName, String driverLicense, int experience) {
         super(firstName, middleName, endName, driverLicense, experience);
@@ -25,7 +24,7 @@ public class DriverC <T extends Transport & Competing> extends Driver {
         return super.hashCode();
     }
 
-    public void drive(T transport) {
+    public void drive(C transport) {
         System.out.println("Водитель ФИО" + getEndName() + " " + getMiddleName() + " "  + getFirstName() +
                 ". Управляет транспортным средством " + transport.getBrand() + " " + transport.getModel() +
                 ". Будет учавстовать в заезде. ");

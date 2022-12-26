@@ -1,16 +1,15 @@
 package Driver;
 
-import Transport.Transport;
-import Transport.Competing;
-
+import java.time.LocalDate;
 import java.util.Objects;
 
-    public abstract class Driver <T extends Transport & Competing> {
+    public abstract class Driver{
         private String firstName;
         private String middleName;
         private String endName;
         private String driverLicense;
         private int experience;
+        private final int yearDriveLicense;
 
 
 
@@ -40,7 +39,8 @@ import java.util.Objects;
                 this.driverLicense = "Не указано";
             }
 
-            this.experience = Math.max(experience, 0);
+            this.experience = experience;
+            this.yearDriveLicense = LocalDate.now().getYear() - experience;
 
 
         }
@@ -54,13 +54,13 @@ import java.util.Objects;
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-            Driver<?> driver = (Driver<?>) o;
-            return experience == driver.experience && Objects.equals(firstName, driver.firstName) && Objects.equals(middleName, driver.middleName) && Objects.equals(endName, driver.endName) && Objects.equals(driverLicense, driver.driverLicense);
+            Driver driver = (Driver) o;
+            return experience == driver.experience && yearDriveLicense == driver.yearDriveLicense && Objects.equals(firstName, driver.firstName) && Objects.equals(middleName, driver.middleName) && Objects.equals(endName, driver.endName) && Objects.equals(driverLicense, driver.driverLicense);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(firstName, middleName, endName, driverLicense, experience);
+            return Objects.hash(firstName, middleName, endName, driverLicense, experience, yearDriveLicense);
         }
 
         public abstract void startMoving();
@@ -103,6 +103,7 @@ import java.util.Objects;
         }
 
         public int getExperience() {
+            experience = LocalDate.now().getYear() - yearDriveLicense;
             return experience;
         }
 

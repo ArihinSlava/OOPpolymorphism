@@ -1,5 +1,4 @@
 import Driver.Driver;
-import Driver.CarDriver;
 import Transport.Bus;
 import Transport.Car;
 import Transport.Truck;
@@ -27,6 +26,8 @@ public class Main {
         Bus mercedesBus = new Bus("Mercedes", "Sprinter", 2.5);
 
 
+
+
         printCarInfo(skoda);
         printCarInfo(audi);
         printCarInfo(nissan);
@@ -45,8 +46,7 @@ public class Main {
         ikarus.getMaxSpeed();
 
 
-        CarDriver<Car> mihail = new CarDriver<>("Михаил", "Михайлович", "Михайлов", "B", 10);
-        mihail.drive(skoda);
+
 
 
     }

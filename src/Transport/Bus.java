@@ -28,6 +28,8 @@ public class Bus extends Transport implements Competing {
         System.out.println("Автобус " + getBrand() + " " + getModel() + " показал лучшее время круга: ");
     }
 
+
+
     @Override
     public void getMaxSpeed() {
         System.out.println("Автобус " + getBrand() + " " + getModel() + " проехал с максимальной скорость: ");

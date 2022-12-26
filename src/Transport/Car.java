@@ -22,6 +22,8 @@ public class Car extends Transport implements Competing {
         System.out.println("Автомобиль " + getBrand() + " " + getModel() + " делает пит-стоп");;
     }
 
+
+
     @Override
     public void getBestLapTime() {
         System.out.println("Автомобиль " + getBrand() + " " + getModel() + ": лучшее время круга составило: ");

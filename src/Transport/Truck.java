@@ -29,6 +29,8 @@ public class Truck extends Transport implements Competing {
         System.out.println("Тягач " + getBrand() + " " + getModel() + " лучшее время круга составило ");
     }
 
+
+
     @Override
     public void getMaxSpeed() {
         System.out.println("Тягач " + getBrand() + " " + getModel() + " поехал с максимальной скорость: " );;

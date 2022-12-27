@@ -1,4 +1,4 @@
-package Transport;
+package transport;
 
 import java.util.Objects;
 
@@ -46,11 +46,8 @@ public abstract class Transport {
 
     @Override
     public String toString() {
-        return "Transport.Transport{" +
-                "brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", engineCapacity=" + engineCapacity +
-                '}';
+        return "Транспорстрое стредство: " + brand + " " + model + " " +
+                ". Мощность двигателя " + engineCapacity;
     }
 
     @Override

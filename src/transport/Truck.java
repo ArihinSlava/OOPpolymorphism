@@ -1,6 +1,4 @@
-package Transport;
-
-import Transport.Transport;
+package transport;
 
 public class Truck extends Transport implements Competing {
 

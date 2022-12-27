@@ -1,6 +1,4 @@
-package Transport;
-
-import java.util.Objects;
+package transport;
 
 public class Bus extends Transport implements Competing {
 

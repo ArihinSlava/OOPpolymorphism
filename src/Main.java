@@ -1,7 +1,7 @@
-import Driver.Driver;
-import Transport.Bus;
-import Transport.Car;
-import Transport.Truck;
+import driver.Driver;
+import transport.Bus;
+import transport.Car;
+import transport.Truck;
 
 
 
@@ -26,44 +26,24 @@ public class Main {
         Bus mercedesBus = new Bus("Mercedes", "Sprinter", 2.5);
 
 
-
-
-        printCarInfo(skoda);
-        printCarInfo(audi);
-        printCarInfo(nissan);
-        printCarInfo(bmw);
-        printTruckInfo(kamaz);
-        printTruckInfo(mercedesTruck);
-        printTruckInfo(valdai);
-        printTruckInfo(gazel);
-        printBusInfo(ikarus);
-        printBusInfo(liaz);
-        printBusInfo(man);
-        printBusInfo(mercedesBus);
-
+        System.out.println(skoda);
+        System.out.println(audi);
+        System.out.println(kamaz);
+        System.out.println(mercedesTruck);
+        System.out.println(valdai);
+        System.out.println(ikarus);
+        System.out.println(man);
         skoda.pitStop();
         audi.getBestLapTime();
         ikarus.getMaxSpeed();
 
+        Driver<Car> mihail = new Driver<>("Иван", "Иванович", "Иванов", "B", 10);
+        Driver<Bus> slava = new Driver<>("Вячеслав", "Леонидович", "Арихин", "D", 20);
+        Driver<Truck> valerii = new Driver<>("Валерий", "Анатольевич", "Луценко", "С", 15);
+        mihail.drive(skoda);
+        slava.drive(man);
+        valerii.drive(kamaz);
 
 
-
-
-    }
-
-
-
-
-
-    public static void printCarInfo(Car car) {
-        System.out.println(car.getBrand() + " " + car.getModel() + " Мощность двигателя " + car.getEngineCapacity());
-    }
-
-    public static void printBusInfo(Bus bus) {
-        System.out.println(bus.getBrand() + " " + bus.getModel() + " Мощность двигателя " + bus.getEngineCapacity());
-    }
-
-    public static void printTruckInfo(Truck truck) {
-        System.out.println(truck.getBrand() + " " + truck.getModel() + " Мощность двигателя " + truck.getEngineCapacity());
     }
 }

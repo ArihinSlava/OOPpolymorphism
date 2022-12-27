@@ -1,19 +1,21 @@
-package Driver;
+package driver;
+
+import transport.Competing;
+import transport.Transport;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-    public abstract class Driver{
+    public class Driver <T extends Transport & Competing> {
         private String firstName;
         private String middleName;
         private String endName;
         private String driverLicense;
         private int experience;
-        private final int yearDriveLicense;
 
 
 
-        public Driver(String firstName, String middleName, String endName, String driverLicense, int experience ) {
+        public Driver(String firstName, String middleName, String endName, String driverLicense, int experience) {
 
             if (firstName == null || firstName.isEmpty() || firstName.isBlank()) {
                 this.firstName = "Не указано";
@@ -40,35 +42,14 @@ import java.util.Objects;
             }
 
             this.experience = experience;
-            this.yearDriveLicense = LocalDate.now().getYear() - experience;
-
-
-        }
-        @Override
-        public String toString() {
-            return "Водитель " + endName + " " + middleName + " " + firstName +
-                    "Управляет транспортным средством категории" + driverLicense + "с опытом вождения:" + experience + "лет." ;
         }
 
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Driver driver = (Driver) o;
-            return experience == driver.experience && yearDriveLicense == driver.yearDriveLicense && Objects.equals(firstName, driver.firstName) && Objects.equals(middleName, driver.middleName) && Objects.equals(endName, driver.endName) && Objects.equals(driverLicense, driver.driverLicense);
+        public void drive(T transport) {
+            System.out.println("Водитель ФИО: " + firstName + " " + middleName + " " + endName +
+                    ". Управляет транспортным средством " + transport.getBrand() + " " + transport.getModel() +
+                    ". Будет учавстовать в заезде. ");
+
         }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(firstName, middleName, endName, driverLicense, experience, yearDriveLicense);
-        }
-
-        public abstract void startMoving();
-
-        public abstract void stopMoving();
-
-        public abstract void refuel();
-
 
         public String getFirstName() {
             return firstName;
@@ -103,7 +84,6 @@ import java.util.Objects;
         }
 
         public int getExperience() {
-            experience = LocalDate.now().getYear() - yearDriveLicense;
             return experience;
         }
 
@@ -112,6 +92,20 @@ import java.util.Objects;
         }
 
 
+        public void startMoving() {
+            System.out.println("Водитель " + endName + " " +
+                    middleName + " " + endName + " начинает движение.");
+        }
+
+        public void stopMoving() {
+            System.out.println("Водитель " + endName + " " +
+                    middleName + " " + endName + " заканчивает движение.");
+        }
+
+        public void refuelCar() {
+            System.out.println("Водитель " + endName + " " +
+                    middleName + " " + endName + " заправляется.");
+        }
     }
 
 

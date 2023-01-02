@@ -3,8 +3,20 @@ package transport;
 
 public class Car extends Transport implements Competing {
 
-    public Car(String brand, String model, double engineCapacity) {
+    private BodyType bodyType;
+
+    public Car(String brand, String model, double engineCapacity,BodyType bodyType) {
         super(brand, model, engineCapacity);
+        this.bodyType = bodyType;
+
+    }
+
+    public BodyType getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(BodyType bodyType) {
+        this.bodyType = bodyType;
     }
 
     @Override
@@ -20,6 +32,14 @@ public class Car extends Transport implements Competing {
     @Override
     public void pitStop() {
         System.out.println("Автомобиль " + getBrand() + " " + getModel() + " делает пит-стоп");;
+    }
+
+    public void printType() {
+        if (bodyType == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        } else {
+            System.out.println("Автомобиль марки " + getBrand() + ", тип кузова: " + bodyType.getBodyType());
+        }
     }
 
 

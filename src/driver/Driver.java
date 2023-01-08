@@ -80,7 +80,21 @@ import java.util.Objects;
         }
 
         public void setDriverLicense(String driverLicense) {
-            this.driverLicense = driverLicense;
+            if (driverLicense == null || driverLicense.isEmpty()) {
+                try {
+                    throw new DriversLicenceException("Необходимо указать категорию прав для водителя " + getEndName() + getMiddleName() + getFirstName());
+                } catch (DriversLicenceException e) {
+                    System.out.println(e.getMessage());
+                }
+            } else if (driverLicense.equals("B") || driverLicense.equals("C") || driverLicense.equals("D")) {
+                this.driverLicense = driverLicense;
+            } else {
+                try {
+                    throw new DriversLicenceException("Необходимо указать категорию прав для водителя " + getEndName() + getMiddleName() + getFirstName());
+                } catch (DriversLicenceException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
         }
 
         public int getExperience() {

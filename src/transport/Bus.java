@@ -29,6 +29,10 @@ public class Bus extends Transport implements Competing {
         System.out.println("Автобус " + getBrand() + " " + getModel() + " показал лучшее время круга: ");
     }
 
+    public void passDiagnostics() {
+        System.out.println("Автобус не проходит диагностику! ");
+    }
+
     public void printType() {
         if (capacity == null) {
             System.out.println("Данных по транспортному средству недостаточно");

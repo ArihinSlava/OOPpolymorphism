@@ -42,7 +42,10 @@ public class Car extends Transport implements Competing {
         }
     }
 
-
+    @Override
+    public void passDiagnostics() {
+        System.out.println("Нужно пройти диагностику!");
+    }
 
     @Override
     public void getBestLapTime() {

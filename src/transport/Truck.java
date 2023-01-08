@@ -39,6 +39,11 @@ public class Truck extends Transport implements Competing {
         }
     }
 
+    @Override
+    public void passDiagnostics() {
+        System.out.println("Нужно пройти диагностику!");
+    }
+
     public LoadCapacity getLoadCapacity() {
         return loadCapacity;
     }

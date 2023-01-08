@@ -32,6 +32,8 @@ public abstract class Transport {
 
     public abstract void printType();
 
+    public abstract void passDiagnostics();
+
     public String getBrand() {
         return brand;
     }

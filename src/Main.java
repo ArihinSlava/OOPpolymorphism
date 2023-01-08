@@ -42,6 +42,10 @@ public class Main {
         mercedesBus.printType();
         man.printType();
         valdai.printType();
+        mercedesTruck.passDiagnostics();
+        skoda.passDiagnostics();
+        ikarus.passDiagnostics();
+
 
         Driver<Car> mihail = new Driver<>("Иван", "Иванович", "Иванов", "B", 10);
         Driver<Bus> slava = new Driver<>("Вячеслав", "Леонидович", "Арихин", "D", 20);

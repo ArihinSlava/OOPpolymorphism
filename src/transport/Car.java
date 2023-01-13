@@ -1,14 +1,29 @@
 package transport;
 
 
+import mechanic.AbilityToWorkCars;
+import mechanic.Mechanic;
+
+import java.util.List;
+
 public class Car extends Transport implements Competing {
 
-    private BodyType bodyType;
+    private  BodyType bodyType;
 
     public Car(String brand, String model, double engineCapacity,BodyType bodyType) {
         super(brand, model, engineCapacity);
         this.bodyType = bodyType;
 
+    }
+
+    public Car(String brand, String model, double engineCapacity, List<Mechanic> mechanic, BodyType bodyType) {
+        super(brand, model, engineCapacity, mechanic);
+        this.bodyType = bodyType;
+    }
+
+    public Car(String brand, String model, double engineCapacity, List<Mechanic> mechanic, List<Transport> transports, BodyType bodyType) {
+        super(brand, model, engineCapacity, mechanic, transports);
+        this.bodyType = bodyType;
     }
 
     public BodyType getBodyType() {
@@ -40,6 +55,22 @@ public class Car extends Transport implements Competing {
         } else {
             System.out.println("Автомобиль марки " + getBrand() + ", тип кузова: " + bodyType.getBodyType());
         }
+    }
+
+    @Override
+    public void performMaintenance(List<Mechanic> mechanics) {
+        System.out.println("Автомобиль " + getBrand() + " " + getModel() + ", объем двигателя " + getEngineCapacity());
+        for (Mechanic value : mechanics) {
+            if (value.getAbilityToWorkCars() == AbilityToWorkCars.ABILITY_CARS || value.getAbilityToWorkCars() == AbilityToWorkCars.ABILITY_UNIVERSAL) {
+                System.out.println("- обслуживает " + value);
+            }
+        }
+
+    }
+
+    @Override
+    public void fixTheCar(List<Mechanic> mechanics) {
+
     }
 
     @Override

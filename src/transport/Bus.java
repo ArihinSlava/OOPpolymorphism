@@ -1,11 +1,26 @@
 package transport;
 
+import mechanic.AbilityToWorkCars;
+import mechanic.Mechanic;
+
+import java.util.List;
+
 public class Bus extends Transport implements Competing {
 
     private Capacity capacity;
 
     public Bus(String brand, String model, double engineCapacity, Capacity capacity) {
         super(brand, model, engineCapacity);
+        this.capacity = capacity;
+    }
+
+    public Bus(String brand, String model, double engineCapacity, List<Mechanic> mechanic, Capacity capacity) {
+        super(brand, model, engineCapacity, mechanic);
+        this.capacity = capacity;
+    }
+
+    public Bus(String brand, String model, double engineCapacity, List<Mechanic> mechanic, List<Transport> transports, Capacity capacity) {
+        super(brand, model, engineCapacity, mechanic, transports);
         this.capacity = capacity;
     }
 
@@ -32,6 +47,24 @@ public class Bus extends Transport implements Competing {
     public void passDiagnostics() {
         System.out.println("Автобус не проходит диагностику! ");
     }
+
+    @Override
+    public void performMaintenance(List<Mechanic> mechanics) {
+        System.out.println("Автобус " + getBrand() + " " + getModel() + ", объем двигателя " + getEngineCapacity());
+        for (Mechanic value : mechanics) {
+            if (value.getAbilityToWorkCars() == AbilityToWorkCars.ABILITY_BUS || value.getAbilityToWorkCars() == AbilityToWorkCars.ABILITY_UNIVERSAL) {
+                System.out.println("- обслуживает " + value);
+            }
+
+        }
+
+    }
+
+    @Override
+    public void fixTheCar(List<Mechanic> mechanics) {
+
+    }
+
 
     public void printType() {
         if (capacity == null) {

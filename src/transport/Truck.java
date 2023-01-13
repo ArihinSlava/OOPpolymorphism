@@ -1,5 +1,10 @@
 package transport;
 
+import mechanic.AbilityToWorkCars;
+import mechanic.Mechanic;
+
+import java.util.List;
+
 public class Truck extends Transport implements Competing {
 
     private LoadCapacity loadCapacity;
@@ -7,6 +12,16 @@ public class Truck extends Transport implements Competing {
 
     public Truck(String brand, String model, double engineCapacity , LoadCapacity loadCapacity) {
         super(brand, model, engineCapacity);
+        this.loadCapacity = loadCapacity;
+    }
+
+    public Truck(String brand, String model, double engineCapacity, List<Mechanic> mechanic, LoadCapacity loadCapacity) {
+        super(brand, model, engineCapacity, mechanic);
+        this.loadCapacity = loadCapacity;
+    }
+
+    public Truck(String brand, String model, double engineCapacity, List<Mechanic> mechanic, List<Transport> transports, LoadCapacity loadCapacity) {
+        super(brand, model, engineCapacity, mechanic, transports);
         this.loadCapacity = loadCapacity;
     }
 
@@ -42,6 +57,23 @@ public class Truck extends Transport implements Competing {
     @Override
     public void passDiagnostics() {
         System.out.println("Нужно пройти диагностику!");
+    }
+
+    @Override
+    public void performMaintenance(List<Mechanic> mechanics) {
+        System.out.println("Грузовик " + getBrand() + " " + getModel() + ", объем двигателя " + getEngineCapacity());
+        for (Mechanic value : mechanics) {
+            if (value.getAbilityToWorkCars() == AbilityToWorkCars.ABILITY_TRUCK || value.getAbilityToWorkCars() == AbilityToWorkCars.ABILITY_UNIVERSAL) {
+                System.out.println("- обслуживает " + value);
+            }
+
+        }
+
+    }
+
+    @Override
+    public void fixTheCar(List<Mechanic> mechanics) {
+
     }
 
     public LoadCapacity getLoadCapacity() {

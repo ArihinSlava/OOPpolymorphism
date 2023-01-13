@@ -1,5 +1,8 @@
 package transport;
 
+import mechanic.Mechanic;
+
+import java.util.List;
 import java.util.Objects;
 
 public abstract class Transport {
@@ -7,6 +10,12 @@ public abstract class Transport {
     private final String brand;
     private final String model;
     private double engineCapacity;
+
+    List<Mechanic> mechanic;
+
+    List<Transport> transports;
+
+
 
     public Transport(String brand, String model, double engineCapacity) {
 
@@ -25,6 +34,20 @@ public abstract class Transport {
         this.engineCapacity = engineCapacity;
     }
 
+    public Transport(String brand , String model , double engineCapacity , List<Mechanic> mechanic) {
+        this.brand = brand;
+        this.model = model;
+        this.engineCapacity = engineCapacity;
+        this.mechanic = mechanic;
+    }
+
+    public Transport(String brand , String model , double engineCapacity , List<Mechanic> mechanic, List<Transport> transports) {
+        this.brand = brand;
+        this.model = model;
+        this.engineCapacity = engineCapacity;
+        this.mechanic = mechanic;
+        this.transports = transports;
+    }
 
     public abstract void startMoving();
 
@@ -33,6 +56,11 @@ public abstract class Transport {
     public abstract void printType();
 
     public abstract void passDiagnostics();
+
+    public abstract void performMaintenance(List<Mechanic> mechanics);
+
+    public abstract void fixTheCar(List<Mechanic> mechanics);
+
 
     public String getBrand() {
         return brand;

@@ -44,6 +44,13 @@ import java.util.Objects;
             this.experience = experience;
         }
 
+        @Override
+        public String toString() {
+            return "Водитель: " + getEndName() + " " + getMiddleName() + " " +
+                    getFirstName() + ". Имеет водительские права категории: " + getDriverLicense() +
+                    ". Опыт вождения: " + getExperience();
+        }
+
         public void drive(T transport) {
             System.out.println("Водитель ФИО: " + firstName + " " + middleName + " " + endName +
                     ". Управляет транспортным средством " + transport.getBrand() + " " + transport.getModel() +

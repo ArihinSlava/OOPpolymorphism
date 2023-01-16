@@ -4,6 +4,7 @@ import mechanic.AbilityToWorkCars;
 import mechanic.Mechanic;
 
 import java.util.List;
+import java.util.Map;
 
 public class Truck extends Transport implements Competing {
 
@@ -15,7 +16,7 @@ public class Truck extends Transport implements Competing {
         this.loadCapacity = loadCapacity;
     }
 
-    public Truck(String brand, String model, double engineCapacity, List<Mechanic> mechanic, LoadCapacity loadCapacity) {
+    public Truck(String brand, String model, double engineCapacity,  List<Mechanic> mechanic, LoadCapacity loadCapacity) {
         super(brand, model, engineCapacity, mechanic);
         this.loadCapacity = loadCapacity;
     }

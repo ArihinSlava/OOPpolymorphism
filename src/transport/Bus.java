@@ -4,6 +4,7 @@ import mechanic.AbilityToWorkCars;
 import mechanic.Mechanic;
 
 import java.util.List;
+import java.util.Map;
 
 public class Bus extends Transport implements Competing {
 

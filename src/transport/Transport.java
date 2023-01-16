@@ -3,6 +3,7 @@ package transport;
 import mechanic.Mechanic;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public abstract class Transport {
@@ -14,6 +15,8 @@ public abstract class Transport {
     List<Mechanic> mechanic;
 
     List<Transport> transports;
+
+    Map<Transport, Mechanic> hashMap;
 
 
 
@@ -34,14 +37,15 @@ public abstract class Transport {
         this.engineCapacity = engineCapacity;
     }
 
-    public Transport(String brand , String model , double engineCapacity , List<Mechanic> mechanic) {
+    public Transport(String brand, String model, double engineCapacity, List<Mechanic> mechanic) {
         this.brand = brand;
         this.model = model;
         this.engineCapacity = engineCapacity;
         this.mechanic = mechanic;
+
     }
 
-    public Transport(String brand , String model , double engineCapacity , List<Mechanic> mechanic, List<Transport> transports) {
+    public Transport(String brand, String model, double engineCapacity, List<Mechanic> mechanic, List<Transport> transports) {
         this.brand = brand;
         this.model = model;
         this.engineCapacity = engineCapacity;
@@ -75,7 +79,6 @@ public abstract class Transport {
     }
 
 
-
     @Override
     public String toString() {
         return "Транспорстрое стредство: " + brand + " " + model + " " +
@@ -95,7 +98,7 @@ public abstract class Transport {
         return Objects.hash(brand, model, engineCapacity);
     }
 
-    public void  setEngineCapacity(double engineCapacity) {
+    public void setEngineCapacity(double engineCapacity) {
         if (engineCapacity <= 0) {
             this.engineCapacity = 1.5;
         } else {

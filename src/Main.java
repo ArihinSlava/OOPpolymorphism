@@ -4,7 +4,9 @@ import mechanic.Mechanic;
 import transport.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class Main {
@@ -89,6 +91,8 @@ public class Main {
         mechanicList.add(mechanic4);
         mechanicList.forEach(System.out::println);
 
+
+
         Car skoda1 = new Car("Skoda", "Octavia", 2.0, mechanicList , BodyType.BODY_TYPE_SEDAN);
         Car audi1 = new Car("Audi", "A4", 2.5, mechanicList , BodyType.BODY_TYPE_HATCHBACK);
         Car nissan1 = new Car("Nissan", "Qashqai", 2.0, mechanicList , BodyType.BODY_TYPE_CROSSOVER);
@@ -128,6 +132,19 @@ public class Main {
         skoda1.performMaintenance(mechanicList);
         man1.performMaintenance(mechanicList);
         valdai1.performMaintenance(mechanicList);
+
+        Map<Transport, Mechanic> hashMap = new HashMap<>();
+        hashMap.put(skoda1, mechanic);
+        hashMap.put(audi1, mechanic);
+        hashMap.put(kamaz1, mechanic1);
+        hashMap.put(valdai1, mechanic1);
+        hashMap.put(liaz1, mechanic2);
+        hashMap.put(ikarus1, mechanic2);
+        hashMap.put(ikarus1, mechanic2);
+
+        for (Map.Entry<Transport, Mechanic> map : hashMap.entrySet()) {
+            System.out.println(map.getKey() + " : " + map.getValue());
+        }
 
 
     }

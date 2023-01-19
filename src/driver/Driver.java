@@ -1,11 +1,12 @@
-package Driver;
+package driver;
 
-import Transport.Transport;
-import Transport.Competing;
+import transport.Competing;
+import transport.Transport;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
-    public abstract class Driver <T extends Transport & Competing> {
+    public class Driver <T extends Transport & Competing> {
         private String firstName;
         private String middleName;
         private String endName;
@@ -14,7 +15,7 @@ import java.util.Objects;
 
 
 
-        public Driver(String firstName, String middleName, String endName, String driverLicense, int experience ) {
+        public Driver(String firstName, String middleName, String endName, String driverLicense, int experience) {
 
             if (firstName == null || firstName.isEmpty() || firstName.isBlank()) {
                 this.firstName = "Не указано";
@@ -40,14 +41,7 @@ import java.util.Objects;
                 this.driverLicense = "Не указано";
             }
 
-            this.experience = Math.max(experience, 0);
-
-
-        }
-        @Override
-        public String toString() {
-            return "Водитель " + endName + " " + middleName + " " + firstName +
-                    "Управляет транспортным средством категории" + driverLicense + "с опытом вождения:" + experience + "лет." ;
+            this.experience = experience;
         }
 
         @Override
@@ -63,12 +57,19 @@ import java.util.Objects;
             return Objects.hash(firstName, middleName, endName, driverLicense, experience);
         }
 
-        public abstract void startMoving();
+        @Override
+        public String toString() {
+            return "Водитель: " + getEndName() + " " + getMiddleName() + " " +
+                    getFirstName() + ". Имеет водительские права категории: " + getDriverLicense() +
+                    ". Опыт вождения: " + getExperience();
+        }
 
-        public abstract void stopMoving();
+        public void drive(T transport) {
+            System.out.println("Водитель ФИО: " + firstName + " " + middleName + " " + endName +
+                    ". Управляет транспортным средством " + transport.getBrand() + " " + transport.getModel() +
+                    ". Будет учавстовать в заезде. ");
 
-        public abstract void refuel();
-
+        }
 
         public String getFirstName() {
             return firstName;
@@ -99,7 +100,21 @@ import java.util.Objects;
         }
 
         public void setDriverLicense(String driverLicense) {
-            this.driverLicense = driverLicense;
+            if (driverLicense == null || driverLicense.isEmpty()) {
+                try {
+                    throw new DriversLicenceException("Необходимо указать категорию прав для водителя " + getEndName() + getMiddleName() + getFirstName());
+                } catch (DriversLicenceException e) {
+                    System.out.println(e.getMessage());
+                }
+            } else if (driverLicense.equals("B") || driverLicense.equals("C") || driverLicense.equals("D")) {
+                this.driverLicense = driverLicense;
+            } else {
+                try {
+                    throw new DriversLicenceException("Необходимо указать категорию прав для водителя " + getEndName() + getMiddleName() + getFirstName());
+                } catch (DriversLicenceException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
         }
 
         public int getExperience() {
@@ -111,6 +126,20 @@ import java.util.Objects;
         }
 
 
+        public void startMoving() {
+            System.out.println("Водитель " + endName + " " +
+                    middleName + " " + endName + " начинает движение.");
+        }
+
+        public void stopMoving() {
+            System.out.println("Водитель " + endName + " " +
+                    middleName + " " + endName + " заканчивает движение.");
+        }
+
+        public void refuelCar() {
+            System.out.println("Водитель " + endName + " " +
+                    middleName + " " + endName + " заправляется.");
+        }
     }
 
 

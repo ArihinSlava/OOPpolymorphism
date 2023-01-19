@@ -1,5 +1,9 @@
-package Transport;
+package transport;
 
+import mechanic.Mechanic;
+
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public abstract class Transport {
@@ -7,6 +11,14 @@ public abstract class Transport {
     private final String brand;
     private final String model;
     private double engineCapacity;
+
+    List<Mechanic> mechanic;
+
+    List<Transport> transports;
+
+    Map<Transport, Mechanic> hashMap;
+
+
 
     public Transport(String brand, String model, double engineCapacity) {
 
@@ -25,9 +37,34 @@ public abstract class Transport {
         this.engineCapacity = engineCapacity;
     }
 
+    public Transport(String brand, String model, double engineCapacity, List<Mechanic> mechanic) {
+        this.brand = brand;
+        this.model = model;
+        this.engineCapacity = engineCapacity;
+        this.mechanic = mechanic;
+
+    }
+
+    public Transport(String brand, String model, double engineCapacity, List<Mechanic> mechanic, List<Transport> transports) {
+        this.brand = brand;
+        this.model = model;
+        this.engineCapacity = engineCapacity;
+        this.mechanic = mechanic;
+        this.transports = transports;
+    }
+
     public abstract void startMoving();
 
     public abstract void endMoving();
+
+    public abstract void printType();
+
+    public abstract void passDiagnostics();
+
+    public abstract void performMaintenance(List<Mechanic> mechanics);
+
+    public abstract void fixTheCar(List<Mechanic> mechanics);
+
 
     public String getBrand() {
         return brand;
@@ -42,14 +79,10 @@ public abstract class Transport {
     }
 
 
-
     @Override
     public String toString() {
-        return "Transport.Transport{" +
-                "brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", engineCapacity=" + engineCapacity +
-                '}';
+        return "Транспорстрое стредство: " + brand + " " + model + " " +
+                ". Мощность двигателя " + engineCapacity;
     }
 
     @Override
@@ -65,7 +98,7 @@ public abstract class Transport {
         return Objects.hash(brand, model, engineCapacity);
     }
 
-    public void  setEngineCapacity(double engineCapacity) {
+    public void setEngineCapacity(double engineCapacity) {
         if (engineCapacity <= 0) {
             this.engineCapacity = 1.5;
         } else {

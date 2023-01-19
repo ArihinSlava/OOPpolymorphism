@@ -3,10 +3,7 @@ import mechanic.AbilityToWorkCars;
 import mechanic.Mechanic;
 import transport.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class Main {
@@ -132,6 +129,9 @@ public class Main {
         skoda1.performMaintenance(mechanicList);
         man1.performMaintenance(mechanicList);
         valdai1.performMaintenance(mechanicList);
+        audi1.fixTheCar(mechanicList);
+        valdai1.fixTheCar(mechanicList);
+        man1.fixTheCar(mechanicList);
 
         Map<Transport, Mechanic> hashMap = new HashMap<>();
         hashMap.put(skoda1, mechanic);
@@ -144,6 +144,22 @@ public class Main {
 
         for (Map.Entry<Transport, Mechanic> map : hashMap.entrySet()) {
             System.out.println(map.getKey() + " : " + map.getValue());
+        }
+
+
+        Set<Driver> driverSet = new HashSet<>();
+        driverSet.add(mihail);
+        driverSet.add(slava);
+        driverSet.add(valerii);
+
+        for (Driver driver : driverSet) {
+            System.out.println(driver);
+        }
+
+        System.out.println("___________");
+        Iterator<Driver> iterator = driverSet.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
         }
 
 

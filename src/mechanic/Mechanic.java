@@ -1,13 +1,15 @@
 package mechanic;
 
+import transport.Car;
+
 import java.util.Objects;
 
 public class Mechanic {
 
-    private String firstName;
-    private String lastName;
+    private final String firstName;
+    private final String lastName;
     private String company;
-    private AbilityToWorkCars abilityToWorkCars;
+    private final AbilityToWorkCars abilityToWorkCars;
 
     public Mechanic(String firstName, String lastName, String company, AbilityToWorkCars abilityToWorkCars) {
         this.firstName = firstName;
@@ -58,4 +60,6 @@ public class Mechanic {
         return getLastName() + " " + getFirstName() + " из компании: " +
                 getCompany() + ". С квалификацией: " + abilityToWorkCars.getAbility();
     }
+
+
 }

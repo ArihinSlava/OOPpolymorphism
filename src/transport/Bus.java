@@ -63,7 +63,13 @@ public class Bus extends Transport implements Competing {
 
     @Override
     public void fixTheCar(List<Mechanic> mechanics) {
-
+        System.out.println("Механики : ");
+        for (Mechanic value : mechanic) {
+            if (value.getAbilityToWorkCars() == AbilityToWorkCars.ABILITY_BUS || value.getAbilityToWorkCars() == AbilityToWorkCars.ABILITY_UNIVERSAL) {
+                System.out.println("- " + value);
+            }
+            System.out.println("производят регулярное ТО на автомобиле " + getBrand() + " " + getModel());
+        }
     }
 
 
